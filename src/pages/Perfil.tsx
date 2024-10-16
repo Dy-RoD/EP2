@@ -23,7 +23,7 @@ const Perfil: React.FC = () => {
               <h2 className="calificaciones">4.5/5 <IonIcon icon={star} /></h2>
             </div>
             <div className="contBt">
-              <IonButton className="reservaBt" routerLink="./Calendario.tsx">¡Reserva!</IonButton>
+              <IonButton className="reservaBt" routerLink="./Calendario">¡Reserva!</IonButton>
             </div>
           </section>
 
