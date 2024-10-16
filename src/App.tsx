@@ -2,7 +2,6 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -28,22 +27,46 @@ import '@ionic/react/css/display.css';
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+/*import '@ionic/react/css/palettes/dark.system.css'; */
 
 /* Theme variables */
 import './theme/variables.css';
+import Registrarse from './pages/Registrarse';
+import MetodoPago from './pages/MetodoPago';
+import Example from './pages/Example';
+import Menu from './components/Menu';
+import Busqueda from './components/Busqueda';
+import Calendario from './pages/Calendario';
+import Perfil from './pages/Perfil';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <Menu />
+      <Busqueda />
+      <IonRouterOutlet  id='main-content'>
         <Route exact path="/home">
           <Home />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
+        </Route>
+        <Route exact path="/Registrarse">
+          <Registrarse />
+        </Route>
+        <Route exact path="/MetodoPago">
+          <MetodoPago />
+        </Route>
+        <Route exact path="/Example">
+          <Example />
+        </Route>
+        <Route exact path="/Calendario">
+          <Calendario />
+        </Route>
+        <Route exact path="/Perfil">
+          <Perfil />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

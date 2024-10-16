@@ -1,0 +1,11 @@
+ion-toolbar.sc-ion-searchbar-ios-h, ion-toolbar .sc-ion-searchbar-ios-h{
+    padding-top: 15px;
+}
+
+.searchbar-input.sc-ion-searchbar-md{
+    border-radius: 10px;
+}
+
+ion-toolbar.sc-ion-searchbar-md-h, ion-toolbar .sc-ion-searchbar-md-h{
+
+}
