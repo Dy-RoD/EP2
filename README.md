@@ -6,13 +6,14 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 
 ## Tabla de Contenidos
 
-1. [Implementación de 7 mockups UI en el framework Ionic.](#Implementación-de-7-mockups-UI-en-el-framework-Ionic)
-2. [Prototipado Figma](#Prototipado-en-Figma)
-3. [Maquetación Responsiva](#Maquetación-Responsiva)
-4. [Tecnologías](#tecnologías)
+1. [Implementación de 7 mockups UI en el framework Ionic](#Implementación-de-7-mockups-UI-en-el-framework-Ionic)
+2. [modelo de la base de datos](#modelo-de-la-base-de-datos)
+3. [Lectura de Datos JSON](#Lectura-de-Datos-JSON)
+4. [Patrones de diseño](#Patrones-de-diseño)
 
 
-## Implementación de 7 mockups UI en el framework Ionic.
+## Implementación de 7 mockups UI en el framework Ionic
+
 
 - - ## PERFIL DEL PSICOLOGO:
 - Descripción: Los psicólogos pueden crear y personalizar su perfil, incluyendo información sobre su experiencia, especialidades, tarifas, y disponibilidad.
@@ -33,7 +34,7 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 - Roles involucrados: Cliente/Usuario.
 - Análisis: Permite a los usuarios encontrar rápidamente a un psicólogo que se ajuste a sus necesidades específicas.
 - Diseño: Barra de búsqueda con opciones de búsqueda en tiempo real que aparece al apretar el icono en forma de lupa.
-.[!IMPORTANTE]: Esta Funcionalidad está presente en todas las paginas por lo que no es necesario crear una nueva (pagina).
+.[!IMPORTANTE]: Esta Funcionalidad está presente en todas las paginas por lo que no es necesario crear una nueva (pagina)..
 
 
 - - ## EVALUACION DE SERVICIOS:
@@ -41,7 +42,7 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 - Roles involucrados: Cliente/Usuario.
 - Análisis: Fomenta la transparencia y permite a los usuarios nuevos basarse en experiencias previas para elegir psicólogos.
 - Diseño: Sistema de evaluación con estrellas y campo para comentarios, visible en el perfil del psicólogo.
-- **_Observación_: Esta Funcionalidad está presente en las páginas "PerfilPsicologo" y "Chatea", por lo que no es necesario crear paginas extras.**
+.[!IMPORTANTE]: Esta Funcionalidad está presente en las páginas "PerfilPsicologo" y "Chatea", por lo que no es necesario crear paginas extras..
 
 
 - - ## MODULO DE PAGOS:
@@ -55,7 +56,8 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 - Descripción: Los usuarios pueden comunicarse con los psicólogos a través de un sistema de mensajería privada para resolver dudas antes de una sesión.
 - Roles involucrados: Psicólogo, Cliente/Usuario.
 - Análisis: Proporciona un canal seguro y directo de comunicación, fomentando la interacción y resolución de dudas.
-- Diseño: Boton que redirecciona a el Whatsapp del psicologo.
+- Diseño: Boton que redirecciona a el WhatsApp del psicologo.
+
 
 - - ## RECURSOS DE AYUDA:
 - Descripción:  Acceso a una colección de artículos, videos, y otros recursos relacionados con la salud mental disponibles (proporcionado por el psicólogo a cargo) para los usuarios que hallan reservado la atención del profesional.
@@ -65,14 +67,25 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 
 
 
-## Prototipado en Figma
+## modelo de la base de datos
 
-[Prototipado de Cada Funcionalidad](https://www.figma.com/design/UISLU6SCwzGwO3Q3YaHHgu/Ing-Web?node-id=0-1&t=WlUnbO4bjDrP5p23-1)
+[Diagrama De la Base de Datos a utilizar](https://imgur.com/a/ozTlDRS)
 
-## Maquetación Responsiva
-La aplicación será desarrollada con HTML5, CSS3 y JavaScript, utilizando CSS y frameworks como Bootstrap para la maquetación responsiva.
+MySQL es una excelente opción para bases de datos relacionales debido a su alta fiabilidad y rendimiento. Ofrece una amplia compatibilidad con diversas plataformas y lenguajes de programación, lo que facilita su integración en proyectos. Además, cuenta con una comunidad activa y abundante documentación, lo que simplifica la resolución de problemas. Su escalabilidad permite manejar desde pequeños proyectos hasta aplicaciones empresariales de gran tamaño. Por último, su modelo de licencias open-source reduce costos, haciendo de MySQL una opción accesible y eficiente.
 
-## Tecnologías
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+## Lectura de Datos JSON
+
+Para leer datos JSON se utilizo el famoso framework llamado `Express` que nos permite hacer peticiones HTTP y utilizar JSON como el formato de datos.
+
+El uso de `express` para leer JSON se puede ver y probar en la pagina [Reserva](https://imgur.com/a/r8L6Mfd) en donde se utiliza un fichero JSON llamado `eventos.json` el cual llama a las reservas que tiene un usuario y se muestra en pantalla (.[!IMPORTANTE] siempre y cuando el dia que tenga esa reserva este seleccionado y este contenga reservas.).
+
+## Patrones de diseño
+
+- - ## DRAWER: 
+- menu ubicado arriba a  la derecha de la pantalla que contiene botones  que redirigen a nuevas paginas, los que permiten al usuario cambiar de sección con un solo toque.
+
+- - ## PULL TO REFRESH (Deslizar para actualizar):
+- Este patrón se usa para actualizar el contenido de una pantalla deslizando hacia abajo, lo que resulta intuitivo en dispositivos móviles (se podra encontrar aplicado en  la pagina principal al estar o no logeado (aun no  construida).
+
+- - ## NAVIGATION BAR:
+- Barra de busqueda en el cual el  usuario  puede buscar ya sea psicologos o regiones  registradas  en la aplicacion.
