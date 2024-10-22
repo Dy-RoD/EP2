@@ -79,7 +79,7 @@ MySQL es una excelente opción para bases de datos relacionales debido a su alta
 
 Para leer datos JSON se utilizo el famoso framework llamado `Express` que nos permite hacer peticiones HTTP y utilizar JSON como el formato de datos.
 
-El uso de `express` para leer JSON se puede ver y probar en la pagina [Reserva](https://imgur.com/a/r8L6Mfd) en donde se utiliza un fichero JSON llamado `eventos.json` el cual llama a las reservas que tiene un usuario y se muestra en pantalla ( siempre y cuando el dia que tenga esa reserva este seleccionado y este contenga reservas).
+El uso de `express` para leer JSON se puede ver y probar en la pagina [Reserva](https://imgur.com/a/rDNvQUO) en donde se utiliza un fichero JSON llamado `eventos.json` el cual llama a las reservas que tiene un usuario y se muestra en pantalla ( siempre y cuando el dia que tenga esa reserva este seleccionado y este contenga reservas).
 
 ## Patrones de diseño
 
