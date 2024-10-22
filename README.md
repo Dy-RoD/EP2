@@ -35,7 +35,7 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 - Análisis: Permite a los usuarios encontrar rápidamente a un psicólogo que se ajuste a sus necesidades específicas.
 - Diseño: Barra de búsqueda con opciones de búsqueda en tiempo real que aparece al apretar el icono en forma de lupa.
 > [!IMPORTANT]  
-> Crucial information necessary for users to succeed.
+> Esta Funcionalidad esta presente en todas las paginas por lo que no es necesario crear una nueva (pagina).
 
 
 - - ## EVALUACION DE SERVICIOS:
@@ -43,7 +43,8 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 - Roles involucrados: Cliente/Usuario.
 - Análisis: Fomenta la transparencia y permite a los usuarios nuevos basarse en experiencias previas para elegir psicólogos.
 - Diseño: Sistema de evaluación con estrellas y campo para comentarios, visible en el perfil del psicólogo.
-> [!IMPORTANT]  :Esta Funcionalidad está presente en las páginas "PerfilPsicologo" y "Chatea", por lo que no es necesario crear paginas extras.
+> [!IMPORTANT] 
+> Esta Funcionalidad está presente en las páginas "PerfilPsicologo" y "Chatea", por lo que no es necesario crear paginas extras.
 
 
 - - ## MODULO DE PAGOS:
