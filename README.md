@@ -13,7 +13,8 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 
 
 ## Implementación de 7 mockups UI en el framework Ionic
-
+> [!IMPORTANT] 
+> La aplicacion inicia en el archivo `Home.tsx` el cual reemplaza a `Login.html` de la entrega pasada.
 
 - - ## PERFIL DEL PSICOLOGO:
 - Descripción: Los psicólogos pueden crear y personalizar su perfil, incluyendo información sobre su experiencia, especialidades, tarifas, y disponibilidad.
