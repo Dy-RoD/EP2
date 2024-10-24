@@ -33,7 +33,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Registrarse from './pages/Registrarse';
 import MetodoPago from './pages/MetodoPago';
-import Example from './pages/Example';
+import Chatea from './pages/Chatea';
 import Menu from './components/Menu';
 import Busqueda from './components/Busqueda';
 import Calendario from './pages/Calendario';
@@ -59,8 +59,8 @@ const App: React.FC = () => (
         <Route exact path="/MetodoPago">
           <MetodoPago />
         </Route>
-        <Route exact path="/Example">
-          <Example />
+        <Route exact path="/Chatea">
+          <Chatea />
         </Route>
         <Route exact path="/Calendario">
           <Calendario />

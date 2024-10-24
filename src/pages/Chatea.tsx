@@ -1,9 +1,9 @@
 import React from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon, IonButtons, IonImg, IonMenuButton } from '@ionic/react';
-import { star, lockClosed } from 'ionicons/icons';
-import './Perfil.css';
+import { star, lockClosed, logoWhatsapp } from 'ionicons/icons';
+import './Chatea.css';
 
-const Perfil: React.FC = () => {
+const Chatea: React.FC = () => {
   return (
     <IonPage>
         <IonHeader>
@@ -23,8 +23,15 @@ const Perfil: React.FC = () => {
               <h2 className="calificaciones">4.5/5 <IonIcon icon={star} /></h2>
             </div>
             <div className="contBt">
-              <IonButton className="reservaBt" routerLink="./Calendario">¡Reserva!</IonButton>
-            </div>
+            {/* Whatsapp del Psicólogo para contactar */}
+            <a href="https://wa.me/56935270762?text=Hola!%2C%20preg%C3%BAntame%20lo%20que%20necesites%20%3AD"
+              target="_blank"
+              rel="noopener noreferrer">
+              <IonButton id="chatbt" className="chateaBt">
+                <IonIcon icon={logoWhatsapp}></IonIcon>
+              </IonButton>
+            </a>
+          </div>
           </section>
 
           {/* Sección Títulos */}
@@ -62,16 +69,16 @@ const Perfil: React.FC = () => {
 
           {/* Sección Recomendaciones */}
           <section className="seccionRecomendaciones">
-            <div className="container-Recomendaciones">
+            <div className="containerRecomendaciones">
               <h2><IonIcon icon={lockClosed} /> Recomendaciones</h2>
               <ul>
                 <li><img className="star" src="../assets/images/starSelect.png" alt="estrella" /> 
                   Consejos para una buena convivencia: 
-                  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></a>
+                  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Ver video</a>
                 </li>
                 <li><img className="star" src="../assets/images/starSelect.png" alt="estrella" /> 
                   Artículo sobre relaciones sanas: 
-                  <a href="https://es.wikipedia.org/wiki/No-Utilizar-Wikipedia-Como-Fuente"></a>
+                  <a href="https://es.wikipedia.org/wiki/No-Utilizar-Wikipedia-Como-Fuente">Leer más</a>
                 </li>
               </ul>
             </div>
@@ -98,4 +105,4 @@ const Perfil: React.FC = () => {
   );
 };
 
-export default Perfil;
+export default Chatea;
