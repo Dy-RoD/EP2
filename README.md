@@ -72,7 +72,7 @@ registro de psicólogos que ofrecen diferentes servicios para la atención de la
 
 ## modelo de la base de datos
 
-[Diagrama De la Base de Datos a utilizar](https://imgur.com/a/ozTlDRS)
+[Diagrama De la Base de Datos a utilizar](https://imgur.com/a/MQmLy5b)
 
 MySQL es una excelente opción para bases de datos relacionales debido a su alta fiabilidad y rendimiento. Ofrece una amplia compatibilidad con diversas plataformas y lenguajes de programación, lo que facilita su integración en proyectos. Además, cuenta con una comunidad activa y abundante documentación, lo que simplifica la resolución de problemas. Su escalabilidad permite manejar desde pequeños proyectos hasta aplicaciones empresariales de gran tamaño. Por último, su modelo de licencias open-source reduce costos, haciendo de MySQL una opción accesible y eficiente.
 
@@ -80,7 +80,7 @@ MySQL es una excelente opción para bases de datos relacionales debido a su alta
 
 Para leer datos JSON se utilizo el famoso framework llamado `Express` que nos permite hacer peticiones HTTP y utilizar JSON como el formato de datos.
 
-El uso de `express` para leer JSON se puede ver y probar en la pagina [Reserva](https://imgur.com/a/rDNvQUO) en donde se utiliza un fichero JSON llamado `eventos.json` el cual llama a las reservas que tiene un usuario y se muestra en pantalla ( siempre y cuando el dia que tenga esa reserva este seleccionado y este contenga reservas).
+El uso de `express` para leer JSON se puede ver y probar en la pagina [Reserva](https://imgur.com/a/B6Xns6J) en donde se utiliza un fichero JSON llamado `eventos.json` el cual llama a las reservas que tiene un usuario y se muestra en pantalla ( siempre y cuando el dia que tenga esa reserva este seleccionado y este contenga reservas).
 
 ## Patrones de diseño
 
