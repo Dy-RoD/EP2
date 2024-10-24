@@ -31,24 +31,38 @@ const Calendario = () => {
   const [diasCalendario, setDiasCalendario] = useState<string[]>([]);
   const [diaHoy, setDiaHoy] = useState(hoy.getDate());
   const [fechaInput, setFechaInput] = useState('');
-  const [arrEvents, setArrEventos] = useState<any[]>([]);
+  const [arrEventos, setArrEventos] = useState<any[]>([]);
   const [nombreEvento, setNombreEvento] = useState('');
   const [inicioEvento, setInicioEvento] = useState('');
   const [terminoEvento, setTerminoEvento] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [diaEvento, setDiaEvento] = useState('');
-  const [fechaEvento, setFechaEvento] = useState('');
+  const [fechaEvento, setFechaEvento] = useState('');let inicio = 1;
+  const [eventosDelDia, setEventosDelDia] = useState<any[]>([]);
 
-  // Simulación de eventos
-  const [arrEventos] = useState([
-    { dia: 9, mes: 10, anio: 2024,inicio:"10:30", termino:"12:30", nombre: "Reserva 1" },
-    { dia: 13, mes: 10, anio: 2024,inicio:"15:30", termino:"16:30", nombre: "Reserva 2" },
-  ]);
+  // Nueva función para cargar los eventos desde el archivo JSON
+  useEffect(() => {
+    // Función para leer el archivo JSON
+    const cargarEventos = async () => {
+      try {
+        const response = await fetch('/assets/json/eventos.json'); // Ruta al archivo JSON
+        const data = await response.json(); // Convertir la respuesta a JSON
+        setArrEventos(data); // Guardar los datos en el estado
+      } catch (error) {
+        console.error("Error al cargar el archivo JSON", error);
+      }
+    };
 
+    cargarEventos();
+  }, []);
+
+  // Función para actualizar la fecha del día seleccionado
+  const [diaSeleccionado, setDiaSeleccionado] = useState<number | null>(null);
+  
   // Actualiza los días del calendario cada vez que se cambia el mes o año
   useEffect(() => {
     updateCalendario();
-  }, [mes, anio]);
+  }, [mes, anio, arrEventos]);
 
   const updateCalendario = () => {
     const primerDia = new Date(anio, mes, 1);
@@ -71,7 +85,9 @@ const Calendario = () => {
       let evento = arrEventos.some(e => e.dia === j && e.mes === mes + 1 && e.anio === anio);
       if (j === diaHoy && anio === hoy.getFullYear() && mes === hoy.getMonth()) {
         // Día de hoy
-        nuevosDias.push(evento ? `<div class="dia hoy evento seleccionado">${j}</div>` : `<div class="dia hoy seleccionado">${j}</div>`);
+        nuevosDias.push(evento ? `<div class="dia hoy evento ">${j}</div>` : `<div class="dia hoy ">${j}</div>`);
+        setDiaSeleccionado(j+1);
+        fechaDiaSelec(j);
       } else {
         // Otros días
         nuevosDias.push(evento ? `<div class="dia evento">${j}</div>` : `<div class="dia">${j}</div>`);
@@ -102,6 +118,7 @@ const Calendario = () => {
         setMes(mes + 1);
       }
     }
+    updateCalendario();
   };
 
   const handleFechaInputChange = (e: any) => {
@@ -183,6 +200,73 @@ const Calendario = () => {
     toggleForm();
   };
 
+  // Función para manejar el clic en un día
+  const handleClickDia = (dia: any, index: number) => {
+    if (dia.includes("previo")) {
+        cambiarMes('prev');
+    } else if (dia.includes("siguiente")) {
+        cambiarMes('next');
+    } else {
+        setDiaSeleccionado(index);
+        fechaDiaSelec(index-1);
+    }
+
+    updateEventos(index-1);
+    
+};
+
+  // Funcion para actualizar los eventos del día seleccionado
+  const fechaDiaSelec = (fecha: number) => {
+    const dia = new Date(anio, mes, fecha);
+    const nombreDia = new Intl.DateTimeFormat('es-ES', { weekday: 'short'}).format(dia);
+
+    // Actualizamos los estados para reflejar el día y la fecha en la UI
+    setDiaEvento(nombreDia);
+    setFechaEvento(`${fecha} ${ArrMeses[mes]} ${anio}`);
+  };
+
+  const updateEventos = (fecha: number) => {
+    let eventos: JSX.Element[] = [];
+
+    arrEventos.forEach((evento) => {
+        // Verificamos que el evento tenga valores válidos
+        if (
+            evento.dia !== undefined &&
+            evento.mes !== undefined &&
+            evento.anio !== undefined &&
+            fecha === evento.dia &&
+            mes + 1 === evento.mes &&
+            anio === evento.anio
+        ) {
+            // Si hay eventos, se preparan para mostrar en pantalla
+            eventos.push(
+                <div className="evento" key={evento.nombre}>
+                    <div className="titulo">
+                        <i className="bi bi-balloon-heart"></i>
+                        <h3 className="titulo-evento">{evento.nombre}</h3>
+                    </div>
+                    <div className="hora-evento">
+                      <span className="hora-evento">{`${evento.inicio} - ${evento.termino}`}</span>
+                    </div>
+                </div>
+            );
+        }
+    });
+
+    // Si no hay eventos para mostrar
+    if (eventos.length === 0) {
+        eventos = [
+            <div className="no-eventos" key="no-eventos">
+                <h3>No hay reservas</h3>
+            </div>,
+        ];
+    }
+
+    // Actualiza el estado de eventos del día
+    setEventosDelDia(eventos);
+  };
+
+
   return (
     <IonPage>
       <IonHeader>
@@ -235,10 +319,13 @@ const Calendario = () => {
                     // Extraemos la clase y el texto del día
                     const diaClase = diaElement.className;
                     const diaTexto = diaElement.innerHTML;
-
                     // Renderizamos el día con la clase adecuada y el contenido correcto
-                    return (
-                      <div key={index} className={diaClase}>
+                  return (
+                      <div
+                        key={index}
+                        className={`${diaClase} ${diaSeleccionado === index ? 'seleccionado' : ''}`}
+                        onClick={() => handleClickDia(diaClase, parseInt(diaTexto) + 1)}
+                      >
                         {diaTexto}
                       </div>
                     );
@@ -271,19 +358,11 @@ const Calendario = () => {
             {/* Lado Derecho */}
             <div className="derecha">
               <div className="fecha-hoy">
-                <div className="dia-evento">Vie</div>
-                <div className="fecha-evento">18 Octubre 2024</div>
+                <div className="dia-evento">{diaEvento}</div>
+                <div className="fecha-evento">{fechaEvento}</div>
               </div>
               <div className="eventos">
-                {arrEventos.map((evento, index) => (
-                  <div className="evento" key={index}>
-                    <div className="titulo">
-                      <IonIcon icon={balloonOutline} />
-                      <h3 className="titulo-evento">{evento.nombre}</h3>
-                    </div>
-                    <div className="hora-evento">{evento.inicio} - {evento.termino}</div>
-                  </div>
-                ))}
+                {eventosDelDia}
               </div>
               <div className="contenedor-aniadir-evento">
                 {isOpen && (

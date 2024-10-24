@@ -130,6 +130,7 @@ header{
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .calendario .dias .dia{
@@ -178,7 +179,6 @@ header{
 
 .calendario .dias .hoy{
     font-size: 2rem;
-    color: #777777;
 }
 
 .calendario .dias .evento{
